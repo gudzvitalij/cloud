@@ -1,24 +1,14 @@
 package com.example.users.repository;
 
 import com.example.users.entity.User;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
-@Transactional
-public class UserRepository {
-    @PersistenceContext
-    private EntityManager entityManager;
 
-    public List<User> getAll() {
-        return entityManager.createQuery("select u from User u order by u.id desc", User.class).getResultList();
-    }
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    public User getById(long id) {
-        return entityManager.find(User.class, id);
-    }
+    Optional<User> findById(Long id);
+
+    List<User> getAll();
 }
