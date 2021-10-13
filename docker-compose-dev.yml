@@ -46,7 +46,7 @@ services:
       - 9993:9993
     depends_on:
       - zookeeper
-  db1:
+  payments-db:
     image: postgres:alpine
     ports:
       - 5430:5432
@@ -55,8 +55,8 @@ services:
       - POSTGRES_USER=app1
       - POSTGRES_PASSWORD=pass1
     volumes:
-      - ./docker-entrypoint-initdb.d1:/docker-entrypoint-initdb.d
-  db2:
+      - .data/src/main/resources/docker-entrypoint-initdb.d1:/docker-entrypoint-initdb.d
+  users-db:
     image: postgres:alpine
     ports:
       - 5431:5432
@@ -65,4 +65,4 @@ services:
       - POSTGRES_USER=app2
       - POSTGRES_PASSWORD=pass2
     volumes:
-      - ./docker-entrypoint-initdb.d2:/docker-entrypoint-initdb.d
+      - ./users/src/main/resources/docker-entrypoint-initdb.d2:/docker-entrypoint-initdb.d
