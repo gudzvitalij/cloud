@@ -21,7 +21,7 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public List<UserDto> getUsers(ArrayList<Long> usersId) {
+    public List<UserDto> getUsers(List<Long> usersId) {
        return usersId.stream()
                .map(userRepository::getById)
                .map(userMapper::toUserDto)

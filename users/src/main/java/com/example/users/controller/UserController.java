@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/users/list")
-    public List<UserDto> getUsersById(@RequestBody ArrayList<Long> usersId) {
+    public List<UserDto> getUsersById(@RequestBody List<Long> usersId) {
         logger.info("users by id");
         return userService.getUsers(usersId);
     }
