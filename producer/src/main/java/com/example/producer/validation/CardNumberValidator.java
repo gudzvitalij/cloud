@@ -19,6 +19,6 @@ public class CardNumberValidator implements ConstraintValidator<CardNumber, Stri
             }
             sum += cardNum;
         }
-        return sum % 10 == 0;
+        return (!cardNumber.isEmpty()) && (sum % 10 == 0);
     }
 }
